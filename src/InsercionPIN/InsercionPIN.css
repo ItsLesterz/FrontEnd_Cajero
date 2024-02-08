@@ -1,0 +1,27 @@
+.paginaPIN{
+    position: relative;
+    background: url('../bg.png') center/contain;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+  
+  .Titulo {
+      font-size:40px;
+      text-align: center;
+      display: block;
+      margin: 0 auto;
+      width: fit-content; 
+      position: relative; /* Asegura que la posición se calcule en relación con el contenedor padre */
+    top: 40%;
+    }
+    
+    .FormPIN{
+      display: block;
+      margin: 0 auto;
+      width: fit-content; 
+      position: relative; /* Asegura que la posición se calcule en relación con el contenedor padre */
+      top: 40%;
+    }
