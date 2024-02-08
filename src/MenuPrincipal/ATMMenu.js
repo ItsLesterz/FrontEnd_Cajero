@@ -13,10 +13,11 @@ const ATMMenu = ({ onSelectOption }) => {
 
   const handleNavigate = (option) => {
     if (option === 0) {
-      navigate('card-number');
+      navigate('/card-number');
     }
     if (option === 1) {
-      navigate('pin-number');
+      //navigate('/pin-number');
+      console.log('Retiro sin tarjeta');
     }
     if (option === 2) {
       navigate('/')

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./InsercionPIN.css"
 import Button from 'react-bootstrap/Button';
@@ -7,8 +7,12 @@ import Form from 'react-bootstrap/Form';
 import { useState,useEffect} from "react";
 import axios from "axios";
 function InsercionPIN() {
+    const location = useLocation();
+    const navigate = useNavigate();
     const [PIN, setPIN] = useState("");
     const [details, setDetails] = useState('');
+    const cardNumber = location.state.cardData.cardNumber;
+    const cardType = location.state.cardData.type;
 
     const handlePINChange = (e) => {
         const inputValue = e.target.value.replace(/\D/g, "").substring(0, 4);
@@ -24,16 +28,24 @@ function InsercionPIN() {
 
     const handleEnviarPIN = (e) => {
         e.preventDefault();
-        const cardNumber = '2281234567890123'
-        const type = 2;
-        axios.post('http://localhost:4000/cards/validate-pin', {cardNumber: cardNumber, type: type, pin: PIN})
+        axios.post('http://localhost:4000/cards/validate-pin', {cardNumber: cardNumber, type: cardType, pin: PIN})
         .then((response) => {
             if(response.data.success) {
-                console.log(response.data.data);
+                const data = response.data.data;
+                //console.log(response.data.data);
+                if (data.type < 3) {
+                    console.log('Es tarjeta');
+                    navigate('/user-services')
+                } else {
+                    console.log('Es agente');
+                    navigate('/agent-services');
+                }
                 setDetails('');
             } else {
-                console.log(response.data.details);
                 setDetails(response.data.details);
+                setTimeout(() => {
+                    setDetails('');
+                }, 2000);
             }
             setPIN('');
         })

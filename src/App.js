@@ -6,6 +6,8 @@ import PaginaPrincipal from './PaginaPrincipal/PaginaPrincipal';
 import ATMMenu from './MenuPrincipal/ATMMenu'; 
 import CardNumber from './InsercionTarjeta/InsercionTarjeta';
 import PinNumber from './InsercionPIN/InsercionPIN';
+import AgentServices from './AgentServices/AgentServices';
+import UserServices from './UserServices/UserServices';
 
 function App() {
   return (
@@ -16,7 +18,8 @@ function App() {
             <Route path='/main-menu' element={<ATMMenu/>}/>
             <Route path='/card-number' element={<CardNumber/>}/>
             <Route path='/pin-number' element={<PinNumber/>}/>
-
+            <Route path='/agent-services' element={<AgentServices/>}/>
+            <Route path='/user-services' element={<UserServices/>}/>
           </Routes>
         </Router>
     </div>
