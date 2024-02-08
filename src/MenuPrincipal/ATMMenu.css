@@ -2,7 +2,7 @@
 
 .atm-menu-container {
   position: relative;
-  background: url('C:\Users\leste\OneDrive\Desktop\CajeroAutomatico\cajeroautomatico\src\MenuPrincipal\bg.png') center/contain;
+  background: url('../bg.png') center/contain;
   height: 100vh;
   display: flex;
   justify-content: center;

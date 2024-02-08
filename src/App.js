@@ -1,25 +1,21 @@
 // App.js
 
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import PaginaPrincipal from './PaginaPrincipal/PaginaPrincipal';
 import ATMMenu from './MenuPrincipal/ATMMenu'; 
 
-const App = () => {
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  const handleOptionSelect = (option) => {
-    setSelectedOption(option);
-    // Aquí podrías agregar la lógica para navegar a otras páginas o realizar acciones asociadas a cada opción.
-  };
-
+function App() {
   return (
-    <div className="app">
-      {selectedOption ? (
-        <p>Implementa la lógica correspondiente para la opción: {selectedOption}</p>
-      ) : (
-        <ATMMenu onSelectOption={handleOptionSelect} />
-      )}
+    <div className="App">
+        <Router>
+          <Routes>
+            <Route path='/' element={<PaginaPrincipal/>}/>
+            <Route path='/main-menu' element={<ATMMenu/>}/>
+          </Routes>
+        </Router>
     </div>
   );
-};
+}
 
 export default App;

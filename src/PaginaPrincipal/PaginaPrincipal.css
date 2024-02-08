@@ -1,26 +1,4 @@
   
-
-.atm-menu-container {
-    position: relative;
-    background: url('C:\Users\leste\OneDrive\Desktop\CajeroAutomatico\cajeroautomatico\src\MenuPrincipal\bg.png') center/contain;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  
-  .atm-menu-wrapper {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    padding: 20px;
-    width: 800px;
-    height: 500px;
-    justify-content: space-between; 
-    margin-right: 470px;
-    align-items: center;
-  }
-  
   h2 {
     margin-bottom: 20px;
   }
@@ -58,5 +36,12 @@
   
   li:hover {
     background-color: #e0e0e0;
+  }
+
+  .homescreen-container {
+    width: 100%;
+    height: 100%;
+    background: url('home-screen.jpeg') center/contain;
+    background-color: #66b9ed;
   }
   
