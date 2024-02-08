@@ -11,8 +11,16 @@ const ATMMenu = ({ onSelectOption }) => {
     onSelectOption(option);
   };
 
-  const handleExit = () => {
-    navigate('/')
+  const handleNavigate = (option) => {
+    if (option === 0) {
+      navigate('card-number');
+    }
+    if (option === 1) {
+      navigate('pin-number');
+    }
+    if (option === 2) {
+      navigate('/')
+    }
   }
 
   return (
@@ -22,9 +30,9 @@ const ATMMenu = ({ onSelectOption }) => {
       <div className="atm-menu-wrapper">
         <h2>Menú Principal</h2>
         <ul>
-          <li onClick={() => handleOptionClick('retiroConTarjeta')}>Retiro con Tarjeta</li>
-          <li onClick={() => handleOptionClick('retiroSinTarjeta')}>Retiro sin Tarjeta</li>
-          <li onClick={handleExit}>Salir</li>
+          <li onClick={() => handleNavigate(0)}>Retiro con Tarjeta</li>
+          <li onClick={() => handleNavigate(1)}>Retiro sin Tarjeta</li>
+          <li onClick={() =>handleNavigate(2)}>Salir</li>
         </ul>
       </div>
      </div>
