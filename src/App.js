@@ -8,6 +8,8 @@ import CardNumber from './InsercionTarjeta/InsercionTarjeta';
 import PinNumber from './InsercionPIN/InsercionPIN';
 import AgentServices from './AgentServices/AgentServices';
 import UserServices from './UserServices/UserServices';
+import MenuConsulta from './MenuConsultas/MenuConsultas';
+import SaldoConsulta from './ConsultaSaldo/ConsultaSaldo';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
             <Route path='/pin-number' element={<PinNumber/>}/>
             <Route path='/agent-services' element={<AgentServices/>}/>
             <Route path='/user-services' element={<UserServices/>}/>
+            <Route path='/main-consulta' element={<MenuConsulta/>}/>
+            <Route path='/consulta-saldo' element={<SaldoConsulta/>}/>
           </Routes>
         </Router>
     </div>

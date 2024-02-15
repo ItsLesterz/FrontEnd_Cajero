@@ -1,0 +1,11 @@
+.data-container {
+    margin-top: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+    display: flex;
+    background-color: #991922;
+    height: 50px;
+    color: white;
+    font-weight: 700;
+}
+

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Links, useLocation, useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./InsercionPIN.css"
 import Button from 'react-bootstrap/Button';
@@ -34,8 +34,9 @@ function InsercionPIN() {
                 const data = response.data.data;
                 //console.log(response.data.data);
                 if (data.type < 3) {
-                    console.log('Es tarjeta');
-                    navigate('/user-services')
+                    console.log('Tarjeta en InsercionPIN');
+                    console.log(cardNumber);
+                    navigate('/main-consulta', { state: { data: cardNumber } })
                 } else {
                     console.log('Es agente');
                     navigate('/agent-services');
