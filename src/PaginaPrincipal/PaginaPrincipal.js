@@ -15,7 +15,7 @@ const PaginaPrincipal = ({ onSelectOption }) => {
   
   return (
     <div className="overlay">
-    <div className="atm-menu-container">
+    <div className="atm-home-container">
       <div className="atm-menu-wrapper">
         <div onClick={handleScreenClick} className='homescreen-container'>
 

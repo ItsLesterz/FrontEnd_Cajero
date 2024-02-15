@@ -45,3 +45,12 @@
     background-color: #66b9ed;
   }
   
+  .atm-home-container {
+    position: relative;
+    background: url('../bg.png') center/contain;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
