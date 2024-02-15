@@ -25,7 +25,9 @@ function InsercionPIN() {
         }
         setPIN(formattedValue);
     };
-
+    const salir=()=>{
+        navigate("/main-menu")
+      }
     const handleEnviarPIN = (e) => {
         e.preventDefault();
         axios.post('http://localhost:4000/cards/validate-pin', {cardNumber: cardNumber, type: cardType, pin: PIN})
@@ -55,25 +57,19 @@ function InsercionPIN() {
     };
 
         return(
-        <div className='paginaPIN'>
-            <div className="atm-menu-wrapper">
-                    <h2 className='Titulo'>Digite su PIN</h2>
+        <div className='atm-menu-container'>
+                    <h2 className='titulo'>Digite su PIN</h2>
                     <br></br>
                     <br></br>
-                    <Form className='FormPIN'>
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
-                            <Form.Control type="password"
+                    <button className='opciones' variant="primary" type="submit" onClick={handleEnviarPIN}>Continuar</button>
+                            <input type="password"
                             maxLength={4}
                             value={PIN}
                             placeholder="----"
-                            onChange={handlePINChange}/>
-                        </Form.Group>
-                        <p>{details}</p>
-                        <Button variant="primary" type="submit" onClick={handleEnviarPIN}>
-                            Continuar
-                        </Button>
-                    </Form>
-                </div>
+                            onChange={handlePINChange}
+                            style={{position:"fixed",top:"55%",left:"30%"}}/>
+        <p style={{position:"fixed",top:"61%",left:"32%",color:"#f00524",fontSize:"20px"}}>{details}</p>                    <br/>
+                    <button className='salir'onClick={salir}>Salir</button>
         </div>
     )
 }
