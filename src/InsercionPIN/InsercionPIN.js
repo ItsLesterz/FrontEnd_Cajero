@@ -1,9 +1,7 @@
 import React from 'react';
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./InsercionPIN.css"
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import { useState,useEffect} from "react";
 import axios from "axios";
 function InsercionPIN() {
@@ -25,6 +23,7 @@ function InsercionPIN() {
         }
         setPIN(formattedValue);
     };
+
     const salir=()=>{
         navigate("/main-menu")
       }
@@ -34,10 +33,11 @@ function InsercionPIN() {
         .then((response) => {
             if(response.data.success) {
                 const data = response.data.data;
-                //console.log(response.data.data);
                 if (data.type < 3) {
-                    console.log('Es tarjeta');
-                    navigate('/user-services')
+                    console.log('Tarjeta en InsercionPIN');
+                    console.log(cardNumber);
+                    //navigate('/main-consulta', { state: { data: cardNumber } })
+                    navigate('/retiro-tarjeta', { state: { data: cardNumber } })
                 } else {
                     console.log('Es agente');
                     navigate('/agent-services');
@@ -56,20 +56,25 @@ function InsercionPIN() {
         });
     };
 
-        return(
-        <div className='atm-menu-container'>
-                    <h2 className='titulo'>Digite su PIN</h2>
-                    <br></br>
-                    <br></br>
-                    <button className='opciones' variant="primary" type="submit" onClick={handleEnviarPIN}>Continuar</button>
-                            <input type="password"
-                            maxLength={4}
-                            value={PIN}
-                            placeholder="----"
-                            onChange={handlePINChange}
-                            style={{position:"fixed",top:"55%",left:"30%"}}/>
-        <p style={{position:"fixed",top:"61%",left:"32%",color:"#f00524",fontSize:"20px"}}>{details}</p>                    <br/>
-                    <button className='salir'onClick={salir}>Salir</button>
+    return(
+        <div className='insert-pin-container'>
+            <div className='insert-pin-wrapper'>
+                <h2 className='title'>Digite su PIN</h2>
+                <input 
+                    type="password"
+                    maxLength={4}
+                    value={PIN}
+                    placeholder="----"
+                    onChange={handlePINChange}
+                />
+                <ul>
+                    <li className='negative-button'>Salir</li>
+                    <li className='positive-button' onClick={handleEnviarPIN}>Continuar</li>
+                </ul>
+                <div className='details-container'>
+                    <p className='error-message'>{details}</p>                    <br/>
+                </div>
+            </div>
         </div>
     )
 }

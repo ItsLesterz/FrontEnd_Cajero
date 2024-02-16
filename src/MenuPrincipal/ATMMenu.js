@@ -20,11 +20,19 @@ const ATMMenu = ({ onSelectOption }) => {
 
   return (
     <div className="atm-menu-container">
-    <h2 className='titulo'>Menú Principal</h2>
-          <button className='opciones' onClick={() => handleNavigate(0)}>Retiro Con Tarjeta</button>
-          <button style={{ left: '62%' }} className='opciones' onClick={() => handleNavigate(1)}>Retiro Sin Tarjeta</button>
-          <br/>
-        <button className='salir' onClick={() => handleNavigate(2)}>Salir</button>
+      <div className='atm-menu-wrapper'>
+      <h2 className='titulo'>Menú Principal</h2>
+      <div className='options-container'>
+        <ul className='options'>
+          <li className='option' onClick={() => handleNavigate(0)}>Retiro con Tarjeta</li>
+          <li className='negative-button' onClick={() => handleNavigate(2)}>Salir</li>
+        </ul>
+        <ul className='options'>
+          <li className='option'>Retiro sin Tarjeta</li>
+          <li className='empty'></li>
+        </ul>
+      </div>
+      </div>
      </div>
   );
 };

@@ -26,25 +26,43 @@ const RetiroConTarjetaScreen = () => {
         console.log(error);
     })
   };
-  const salir=()=>{
+
+  const handleSalir = () => {
     navigate("/main-menu")
   }
 
+  const handleNumberChange = (e) => {
+    const inputValue = e.target.value.replace(/\D/g, "").substring(0, 16);
+    let formattedValue = "";
+    for (let i = 0; i < inputValue.length; i += 16) {
+        if (i !== 0) {
+            formattedValue += "-";
+        }
+        formattedValue += inputValue.substring(i, i + 16);
+    }
+    setTarjetaNumber(formattedValue);
+};
+
   return (
-      <div className="atm-menu-container">
-      <h2 className='titulo'>Retiro con Tarjeta</h2>
+    <div className="insert-card-container">
+      <div className='insert-card-wrapper'>
+        <h2 className='title'>Retiro con Tarjeta</h2>
         <input
-          type="text"
+          type="number"
           value={tarjetaNumber}
-          onChange={(e) => setTarjetaNumber(e.target.value)}
+          onChange={handleNumberChange}
           placeholder="Número de tarjeta"
-          style={{position:"fixed",top:"55%",left:"30%"}}
+          maxLength={16}
         />
-       
-       <p style={{position:"fixed",top:"61%",left:"32%",color:"#f00524",fontSize:"20px"}}>{details}</p>      <button className='salir'onClick={salir}>Salir</button>
-      <br/>
-      <button className='opciones'onClick={handleContinuar}>Continuar</button>
-       </div>
+        <ul>
+          <li className='negative-button' onClick={handleSalir}>Salir</li>
+          <li className='positive-button' onClick={handleContinuar}>Continuar</li>
+        </ul>
+        <div className='details-container'>
+          <p className='error-message'>{details}</p>
+        </div>
+      </div>
+    </div>
   );
 };
 
