@@ -1,29 +1,29 @@
-  
-
 .atm-menu-container {
-  position: relative;
-  background: url('C:\Users\leste\OneDrive\Desktop\CajeroAutomatico\cajeroautomatico\src\MenuPrincipal\bg.png') center/contain;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  background: url('../bg.png') center/contain;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-color: darkgray;
 }
+
 
 
 .atm-menu-wrapper {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   padding: 20px;
-  width: 800px;
-  height: 500px;
+  width: 950px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between; 
-  margin-right: 470px;
   align-items: center;
+  margin-right: 520px;
 }
 
-h2 {
-  margin-bottom: 20px;
-}
 .button-group {
   display: flex;
 }
@@ -43,19 +43,26 @@ ul {
   justify-content: space-between; /* Divide los elementos a cada lado */
 }
 
-li {
-  background-color: #66b9ed;
-  padding: 10px;
-  flex-grow: 1; /* Hace que los elementos ocupen el espacio disponible */
-  margin-right: 10px;
-  border-radius: 4px;
+.opciones {
+  background-color:blue;
+  color:aliceblue;
   cursor: pointer;
+  height: 10%;
+  width:  8%;
+  font-size:large;
+  position: fixed;
+  top: 20%;
 }
 
-li:last-child {
-  margin-right: 0; /* Elimina el margen derecho para el último elemento */
+
+.options-container {
+  width: 100%;
 }
 
-li:hover {
-  background-color: #e0e0e0;
+.empty {
+  background-color: white;
+}
+
+.empty:hover {
+  background-color: white;
 }

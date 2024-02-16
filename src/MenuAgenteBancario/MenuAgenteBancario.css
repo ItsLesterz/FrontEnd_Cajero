@@ -2,7 +2,7 @@
 
 .atm-menu-container {
     position: relative;
-    background: url('C:\Users\leste\OneDrive\Desktop\CajeroAutomatico\cajeroautomatico\src\MenuPrincipal\bg.png') center/contain;
+    background: url('../bg.png') center/contain;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -36,27 +36,27 @@
     margin-left: auto; /* Empuja los botones a la derecha */
   }
   
-  ul {
+  /*ul {
     list-style-type: none;
     padding: 0;
     display: flex;
-    justify-content: space-between; /* Divide los elementos a cada lado */
+    justify-content: space-between; 
   }
   
   li {
     background-color: #66b9ed;
     padding: 10px;
-    flex-grow: 1; /* Hace que los elementos ocupen el espacio disponible */
+    flex-grow: 1; 
     margin-right: 10px;
     border-radius: 4px;
     cursor: pointer;
   }
   
   li:last-child {
-    margin-right: 0; /* Elimina el margen derecho para el último elemento */
+    margin-right: 0; 
   }
   
   li:hover {
     background-color: #e0e0e0;
-  }
+  }*/
   

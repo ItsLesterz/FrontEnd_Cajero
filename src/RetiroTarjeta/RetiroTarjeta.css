@@ -1,0 +1,167 @@
+.card-withdrawal-container {
+    position: relative;
+    background: url('../bg.png') center/contain;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .card-withdrawal-wrapper {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    width: 800px;
+    height: 500px;
+    justify-content: space-between; 
+    margin-right: 470px;
+    align-items: center;
+  }
+  
+  .card-withdrawal-wrapper h2 {
+    text-align: center;
+  }
+
+  .card-withdrawal-wrapper h3 {
+    text-align: center;
+  }
+
+  .button-group {
+    display: flex;
+  }
+  
+  .left-buttons {
+    margin-right: auto; /* Empuja los botones a la izquierda */
+  }
+  
+  .right-buttons {
+    margin-left: auto; /* Empuja los botones a la derecha */
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between; /* Divide los elementos a cada lado */
+  }
+  
+  li {
+    background-color: #66b9ed;
+    padding: 10px;
+    flex-grow: 1; /* Hace que los elementos ocupen el espacio disponible */
+    margin-right: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  
+  li:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .ButtonContinuar{
+  position: center;
+  margin-top: 20%;
+  display: flex;
+  justify-content: center;
+  }
+  
+  .botonsalir{
+    justify-content:  right;
+    display: flex;
+   
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+  
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  .form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  .form-text {
+    display: block;
+    margin-top: 0.25rem;
+  }
+  
+  .text-muted {
+    color: #6c757d;
+  }
+
+  .options-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+  }
+
+  .options li {
+    font-weight: 600;
+    width: 90%;
+    height: 60px;
+    border-radius: 2px;
+  }
+
+  .option {
+    background-color: rgb(227, 227, 227);
+  }
+
+  .option:hover {
+    background-color: rgb(191, 191, 191);
+  }
+
+  .input-container {
+    margin: 20px;
+  }
+
+  .input-container input {
+    height: 50px;
+    font-size: xx-large;
+    text-align: center;
+  }
+
+  .positive-button {
+    background-color: #53D769;
+    color: white;
+  }
+  
+  .positive-button:hover {
+
+    background-color: #46C263;
+    color: white;
+
+  }
+  
+  .negative-button {
+    background-color: #FC3D39;
+    color: white;
+  }
+  
+  .negative-button:hover {
+    background-color: #E33437;
+    color: white;
+  }

@@ -1,0 +1,72 @@
+.insert-pin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: url('../bg.png') center/contain;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-color: darkgray;
+}
+
+
+
+.insert-pin-wrapper {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+  width: 950px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  align-items: center;
+  margin-right: 520px;
+  color: white;
+}
+
+
+
+li:hover {
+  background-color: #e0e0e0;
+}
+
+.insert-pin-wrapper input {
+  text-align: center;
+  width: 50%;
+  height: 50px;
+  font-size: xx-large;
+}
+
+
+.details-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+}
+
+.error-message {
+  font-size: x-large;
+  color: red;
+}
+
+.positive-button {
+  background-color: #53D769;
+}
+
+.positive-button:hover {
+  background-color: #46C263;
+}
+
+.negative-button {
+  background-color: #FC3D39;
+}
+
+.negative-button:hover {
+  background-color: #E33437;
+}
+
+
+
