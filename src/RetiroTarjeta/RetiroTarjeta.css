@@ -20,6 +20,7 @@
   }
   
   .card-withdrawal-wrapper h2 {
+    color: #f9373a;
     text-align: center;
   }
 
@@ -135,10 +136,13 @@
   }
 
   .input-container {
+    display: flex;
+    justify-content: center;
     margin: 20px;
   }
 
   .input-container input {
+    width: 80%;
     height: 50px;
     font-size: xx-large;
     text-align: center;

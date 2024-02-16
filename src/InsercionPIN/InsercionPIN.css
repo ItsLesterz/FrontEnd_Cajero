@@ -8,9 +8,6 @@
   background-repeat: no-repeat;
   background-color: darkgray;
 }
-
-
-
 .insert-pin-wrapper {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
@@ -22,7 +19,6 @@
   justify-content: space-between; 
   align-items: center;
   margin-right: 520px;
-  color: white;
 }
 
 

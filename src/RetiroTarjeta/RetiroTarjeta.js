@@ -15,7 +15,7 @@ const ATMMenu = ({ onSelectOption }) => {
   };
 
   const handleExit = () => {
-    navigate('/');
+    navigate('/main-menu');
   }
 
   const handleCheckBalance = () => {

@@ -24,9 +24,10 @@ function InsercionPIN() {
         setPIN(formattedValue);
     };
 
-    const salir=()=>{
+    const handleExit = () => {
         navigate("/main-menu")
-      }
+    }
+
     const handleEnviarPIN = (e) => {
         e.preventDefault();
         axios.post('http://localhost:4000/cards/validate-pin', {cardNumber: cardNumber, type: cardType, pin: PIN})
@@ -68,7 +69,7 @@ function InsercionPIN() {
                     onChange={handlePINChange}
                 />
                 <ul>
-                    <li className='negative-button'>Salir</li>
+                    <li className='negative-button' onClick={handleExit}>Salir</li>
                     <li className='positive-button' onClick={handleEnviarPIN}>Continuar</li>
                 </ul>
                 <div className='details-container'>
