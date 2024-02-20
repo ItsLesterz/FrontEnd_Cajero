@@ -10,12 +10,13 @@
   
   .card-withdrawal-wrapper {
     background-color: rgba(255, 255, 255, 0.8);
+    background-color: #f8f8f8;
     border-radius: 10px;
     padding: 20px;
-    width: 800px;
-    height: 500px;
+    width: 950px;
+    height: 635px;
     justify-content: space-between; 
-    margin-right: 470px;
+    margin-right: 520px;
     align-items: center;
   }
   

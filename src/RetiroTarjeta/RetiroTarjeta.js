@@ -1,18 +1,33 @@
 // ATMMenu.js
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './RetiroTarjeta.css';
+import axios from 'axios';
 
 const ATMMenu = ({ onSelectOption }) => {
 
-    const location = useLocation();
-    const cardNumber = location.state.data;
+  const location = useLocation();
+  const cardNumber = location.state.data;
   const navigate = useNavigate();
 
-  const handleOptionClick = (option) => {
-    onSelectOption(option);
-  };
+  const [trays, setTrays] = useState([]);
+
+  const handleGetTrays = () => {
+    axios.post('http://localhost:4000/trays/get-trays', {atmId: 'CJ001'})
+    .then((response) => {
+      setTrays(response.data.data);
+      console.log(response.data.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+
+  }
+
+  useEffect(() => {
+    handleGetTrays();
+  }, []);
 
   const handleExit = () => {
     navigate('/main-menu');
