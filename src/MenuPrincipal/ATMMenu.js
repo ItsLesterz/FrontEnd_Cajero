@@ -10,8 +10,7 @@ const ATMMenu = ({ onSelectOption }) => {
       navigate('/card-number');
     }
     if (option === 1) {
-      //navigate('/pin-number');
-      console.log('Retiro sin tarjeta');
+      navigate('/sin-tarjeta');
     }
     if (option === 2) {
       navigate('/')
@@ -28,7 +27,7 @@ const ATMMenu = ({ onSelectOption }) => {
           <li className='negative-button' onClick={() => handleNavigate(2)}>Salir</li>
         </ul>
         <ul className='options'>
-          <li className='option'>Retiro sin Tarjeta</li>
+          <li className='option' onClick={() => handleNavigate(1)}>Retiro sin Tarjeta</li>
           <li className='empty'></li>
         </ul>
       </div>

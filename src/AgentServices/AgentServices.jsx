@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import './AgentServices.css';
 import '../PaginaPrincipal/PaginaPrincipal.css';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const PaginaPrincipal = ({ onSelectOption }) => {
@@ -31,6 +31,9 @@ const PaginaPrincipal = ({ onSelectOption }) => {
 
   const [showTrayRemovingPopup, setShowTrayRemovingPopup] = useState(false);
 
+  const location = useLocation();
+  const cardNumber = location.state.cardNumber;
+  
   const handleGetTrays = () => {
     axios.post('http://localhost:4000/trays/get-trays', {atmId: 'CJ001'})
     .then((response) => {
@@ -161,9 +164,6 @@ const PaginaPrincipal = ({ onSelectOption }) => {
         <div className="agent-services-wrapper">
           <h2>Servicios de Agente</h2>
           <h4>Bandejas Disponibles</h4>
-          <ul className='trays-holder-container'>
-
-          </ul>
           <ul className='trays-container'>
               {trays.length > 0 ? (
                 trays.map((tray, index) => (

@@ -10,6 +10,7 @@ import AgentServices from './AgentServices/AgentServices';
 import UserServices from './UserServices/UserServices';
 import RetiroTarjeta from './RetiroTarjeta/RetiroTarjeta';
 import MainConsulta from './ConsultaSaldo/ConsultaSaldo';
+import RetiroSinTarjeta from './RetiroSinTarjeta/RetiroSinTarjeta';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path='/user-services' element={<UserServices/>}/>
             <Route path='/retiro-tarjeta' element={<RetiroTarjeta/>}/>
             <Route path='/main-consulta' element={<MainConsulta/>}/>
+            <Route path='/sin-tarjeta' element={<RetiroSinTarjeta/>}/>
           </Routes>
         </Router>
     </div>

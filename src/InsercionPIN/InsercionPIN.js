@@ -41,7 +41,7 @@ function InsercionPIN() {
                     navigate('/retiro-tarjeta', { state: { data: cardNumber } })
                 } else {
                     console.log('Es agente');
-                    navigate('/agent-services');
+                    navigate('/agent-services', {state: {data: cardNumber}});
                 }
                 setDetails('');
             } else {
