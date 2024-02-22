@@ -1,12 +1,18 @@
 
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import './MenuAgenteBancario.css';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const MenuAgenteBancario = ({ onSelectOption }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const handleOptionClick = (option) => {
     onSelectOption(option);
   };
+
+  
 
   return (
     <div className="overlay">

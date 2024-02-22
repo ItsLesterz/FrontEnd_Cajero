@@ -1,7 +1,7 @@
 // ATMMenu.js
 
 import React, { useEffect, useState } from 'react';
-import './AgentServices.css';
+import './CambioBandejas.css';
 import '../PaginaPrincipal/PaginaPrincipal.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -11,7 +11,6 @@ const PaginaPrincipal = ({ onSelectOption }) => {
   const navigate = useNavigate();
 
   const [trays, setTrays] = useState([]);
-  const [newTrays, setNewTrays] = useState([]);
   const [message, setMessage] = useState('');
 
   const [hasExistingTrays,setHasExistingTrays] = useState(false);
@@ -31,8 +30,8 @@ const PaginaPrincipal = ({ onSelectOption }) => {
 
   const [showTrayRemovingPopup, setShowTrayRemovingPopup] = useState(false);
 
+  const [cardNumber, setCardNumber] = useState('');
   const location = useLocation();
-  const cardNumber = location.state.cardNumber;
   
   const handleGetTrays = () => {
     axios.post('http://localhost:4000/trays/get-trays', {atmId: 'CJ001'})
@@ -74,20 +73,68 @@ const PaginaPrincipal = ({ onSelectOption }) => {
         setTimeout(() => {
           setShowTrayRemovingPopup(true);
         }, 2000);
+        const reportDetails = 'Retiro de bandeja en posición ' + currentTray.Posicion_Bandeja + '.';
+        handleCreateReport(reportDetails, currentTray.Denominacion_Billete * currentTray.Cantidad_Billete);
       })
       .catch((error) => {
         setMessage(error.response.data.message);
         setTimeout(() => {
           setMessage('');
         }, 2000);
+        const reportDetails = 'Error al tratar de retirar bandeja en posición ' + currentTray.Posicion_Bandeja;
+        handleCreateReport(reportDetails, 0.00);
       })
   }
+
+  const handleSendTrayData = () => {
+    axios.post('http://localhost:4000/trays/insertar-bandejas', {trays: trays})
+    .then((response) => {
+      setMessage(response.data.details);
+      setTimeout(() => {
+        setMessage('');
+        navigate('/');
+      }, 2000);
+    })
+    .catch((error) => {
+      setMessage(error.response.data.details);
+      setTimeout(() => {
+        setMessage('');
+        navigate('/');
+      }, 2000);
+      const reportDetails = 'Error al tratar de cargar las bandejas';
+      handleCreateReport(reportDetails);
+    })
+  }
+
   const handleInsertTrays = (tray) => {
     if(tray <= 3) {
       setShowPopup(true);
     } else {
       setShowPopup(false);
     }
+  }
+
+  const handleCreateReport = (details, amount) => {
+    const fecha = new Date; 
+    const dia = fecha.getDate().toString().padStart(2, '0'); 
+    const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
+    const anio = fecha.getFullYear().toString();
+
+    const fechaFormateada = `${anio}-${mes}-${dia}`;
+
+    const reportData = {
+      numeroTarjeta: cardNumber,
+      fechaTransaccion: fechaFormateada,
+      detalles: details,
+      monto: amount
+    }
+    axios.post('http://localhost:4000/reports/create-report', { reportData: reportData})
+    .then((response) => {
+      console.log(response.data.details);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
   }
 
   const handleOptionSelect = (option) => {
@@ -119,27 +166,13 @@ const PaginaPrincipal = ({ onSelectOption }) => {
       activo: 0
     };
     newTrays.push(tray);
+    const reportDetails = 'Bandeja insertada en posición ' + position + '.';
+    handleCreateReport(reportDetails, denomination * quantity);
     setTrays(newTrays);
   }
 
 
-  const handleSendTrayData = () => {
-    axios.post('http://localhost:4000/trays/insertar-bandejas', {trays: trays})
-    .then((response) => {
-      setMessage(response.data.details);
-      setTimeout(() => {
-        setMessage('');
-        navigate('/');
-      }, 2000);
-    })
-    .catch((error) => {
-      setMessage(error.response.data.details);
-      setTimeout(() => {
-        setMessage('');
-        navigate('/');
-      }, 2000);
-    })
-  }
+  
 
   const handleInsertNewTrays = () => {
     if (trays.length === 0) {
@@ -156,7 +189,12 @@ const PaginaPrincipal = ({ onSelectOption }) => {
   }
 
   useEffect(() => {
-    handleGetTrays();
+    if (location.state) {
+      setCardNumber(location.state.data);
+      handleGetTrays();
+    } else {
+      navigate('/main-menu')
+    }
   }, []);
   
   return (
@@ -217,7 +255,7 @@ const PaginaPrincipal = ({ onSelectOption }) => {
           {showRemoveTrayPopup && (
             <div className='popup'>
               <div className='popup-content'>
-                <p>Retire la bandeja en la posición {currentTray.Posicion_Bandeja} y muestrela la cámara.</p>
+                <p>Retire la bandeja en la posición {currentTray.Posicion_Bandeja} y muestrela a la cámara.</p>
                 <button onClick={handleRemoveTray}>Aceptar</button>
               </div>
             </div>

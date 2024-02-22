@@ -13,10 +13,10 @@ const PaginaPrincipal = ({ onSelectOption }) => {
 
   
   return (
-    <div className="overlay">
-    <div className="atm-menu-container">
-        <video style={{position:"fixed",width:"80%",height:"81%",top:"9%",right:"25%"}} onClick={handleScreenClick} src={videobackground} autoPlay muted loop/>
-     </div>
+    <div className="atm-home-container">
+      <div className='atm-home-wrapper'>
+        <video  onClick={handleScreenClick} src={videobackground} autoPlay muted loop/>
+      </div>
     </div>
   );
 };

@@ -9,9 +9,8 @@ function InsercionPIN() {
     const navigate = useNavigate();
     const [PIN, setPIN] = useState("");
     const [details, setDetails] = useState('');
-    const cardNumber = location.state.cardData.cardNumber;
-    const cardType = location.state.cardData.type;
-
+    const [cardNumber, setCardNumber] = useState('');
+    const [cardType, setCardType] = useState('');
     const handlePINChange = (e) => {
         const inputValue = e.target.value.replace(/\D/g, "").substring(0, 4);
         let formattedValue = "";
@@ -36,19 +35,19 @@ function InsercionPIN() {
                 const data = response.data.data;
                 if (data.type < 3) {
                     console.log('Tarjeta en InsercionPIN');
-                    console.log(cardNumber);
-                    //navigate('/main-consulta', { state: { data: cardNumber } })
-                    navigate('/retiro-tarjeta', { state: { data: cardNumber } })
+                    navigate('/retiro-tarjeta', { state: { data: cardNumber }})
                 } else {
                     console.log('Es agente');
-                    navigate('/agent-services', {state: {data: cardNumber}});
+                    navigate('/menu-servicios', {state: { data: cardNumber }});
                 }
                 setDetails('');
+                handleCreateReport('Verificación exitosa.', 0.00)
             } else {
                 setDetails(response.data.details);
                 setTimeout(() => {
                     setDetails('');
                 }, 2000);
+                handleCreateReport('Intento fallido al tratar de validar datos.', 0.00)
             }
             setPIN('');
         })
@@ -57,24 +56,64 @@ function InsercionPIN() {
         });
     };
 
+    const handleCreateReport = (details, amount) => {
+        const fecha = new Date; 
+        const dia = fecha.getDate().toString().padStart(2, '0'); 
+        const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
+        const anio = fecha.getFullYear().toString();
+    
+        const fechaFormateada = `${anio}-${mes}-${dia}`;
+    
+        const reportData = {
+          numeroTarjeta: cardNumber,
+          fechaTransaccion: fechaFormateada,
+          detalles: details,
+          monto: amount
+        }
+        axios.post('http://localhost:4000/reports/create-report', { reportData: reportData})
+        .then((response) => {
+          console.log(response.data.details);
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+      }
+
+    useEffect(() => {
+        if (location.state) {
+            setCardNumber(location.state.cardData.cardNumber);
+            setCardType(location.state.cardData.type);
+
+        } else {
+            navigate('/card-number');
+        }
+    });
+
     return(
         <div className='insert-pin-container'>
             <div className='insert-pin-wrapper'>
                 <h2 className='title'>Digite su PIN</h2>
                 <input 
+                    className='pin-input'
                     type="password"
                     maxLength={4}
                     value={PIN}
                     placeholder="----"
                     onChange={handlePINChange}
                 />
-                <ul>
-                    <li className='negative-button' onClick={handleExit}>Salir</li>
-                    <li className='positive-button' onClick={handleEnviarPIN}>Continuar</li>
-                </ul>
                 <div className='details-container'>
                     <p className='error-message'>{details}</p>                    <br/>
                 </div>
+
+                <ul className='options-container'>
+                    <ul className='options'>
+                        <li className='negative-button' onClick={handleExit}>Salir</li>
+                    </ul>
+                    <ul className='options'>
+                        <li className='positive-button' onClick={handleEnviarPIN}>Continuar</li>
+                    </ul>
+                </ul>
+
             </div>
         </div>
     )

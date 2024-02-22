@@ -1,39 +1,27 @@
-  
-  h2 {
-    margin-bottom: 20px;
-  }
-  .button-group {
-    display: flex;
-  }
-  
-  .left-buttons {
-    margin-right: auto; /* Empuja los botones a la izquierda */
-  }
-  
-  .right-buttons {
-    margin-left: auto; /* Empuja los botones a la derecha */
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    justify-content: space-between; /* Divide los elementos a cada lado */
-  }
-  
-  .homescreen-container {
-    width: 100%;
-    height: 100%;
-    background: url('home-screen.jpeg') center/contain;
-    background-color: #66b9ed;
-  }
-  
-  .atm-home-container {
-    position: relative;
-    background: url('../bg.png') center/contain;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+.atm-home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: url('../bg.png') center/contain;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-color: darkgray;
+}
+
+.atm-home-wrapper {
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  align-items: center;
+  margin-right: 475px;
+  width: 830px;
+  height: 600px;
+  margin-top: 43px;
+}
+
+.atm-home-wrapper video {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,65 @@
+.reports-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: url('../bg.png') center/contain;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-color: darkgray;
+  }
+  .reports-wrapper {
+    background-color: rgba(255, 255, 255, 0.8);
+    background-color: #f8f8f8;
+    padding: 20px;
+    width: 825px;
+    height: 595px;
+    margin-right: 475px;
+    margin-top: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: center;
+  }
+
+  .reports-header {
+    display: flex;
+    width: 90%;
+  }
+
+  .id-header {
+    width: 40px;
+  }
+
+  .card-number-header {
+    width: 150px;
+  }
+
+  .report-details-header {
+    width: 370px;
+  }
+
+  .reports {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    width: 90%;
+    height: 50%;
+  }
+
+  .report {
+    display: flex;
+    border-bottom: 2px dashed lightgray;
+  }
+
+  .id {
+    width: 40px;
+  }
+
+  .card-number {
+    width: 150px;
+  }
+
+  .report-details {
+    width: 370px;
+  }

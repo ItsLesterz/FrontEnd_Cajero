@@ -1,0 +1,31 @@
+.other-transactions-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: url('../bg.png') center/contain;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-color: darkgray;
+  }
+  
+  .other-transactions-wrapper {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    width: 825px;
+    height: 595px;
+    margin-right: 475px;
+    margin-top: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .options-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }

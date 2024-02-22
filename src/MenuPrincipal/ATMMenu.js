@@ -10,7 +10,7 @@ const ATMMenu = ({ onSelectOption }) => {
       navigate('/card-number');
     }
     if (option === 1) {
-      navigate('/sin-tarjeta');
+      navigate('/denominaciones-disponibles');
     }
     if (option === 2) {
       navigate('/')

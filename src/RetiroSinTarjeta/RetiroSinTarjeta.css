@@ -1,22 +1,24 @@
 .no-card-withdrawal-container {
-    position: relative;
-    background: url('../bg.png') center/contain;
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    background: url('../bg.png') center/contain;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-color: darkgray;
   }
-  
-  
   .no-card-withdrawal-wrapper {
     background-color: rgba(255, 255, 255, 0.8);
     background-color: #f8f8f8;
-    border-radius: 10px;
     padding: 20px;
-    width: 950px;
-    height: 635px;
+    width: 825px;
+    height: 595px;
+    margin-right: 475px;
+    margin-top: 45px;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between; 
-    margin-right: 520px;
     align-items: center;
   }
   
@@ -145,9 +147,10 @@
     display: flex;
     justify-content: center;
     margin: 20px;
+    height: 269px;
   }
 
-  .input-container input {
+  .no-card-withdrawal-wrapper input {
     width: 80%;
     height: 50px;
     font-size: xx-large;
@@ -176,7 +179,14 @@
     color: white;
   }
 
+  .denominations {
+    display: flex;
+    flex-direction: column;
+    height: 120px;
+  }
+
   .denomination {
+    width: 100%;
     display: flex;
     justify-content: center;
   }

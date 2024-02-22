@@ -10,15 +10,16 @@
 }
 .insert-pin-wrapper {
   background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 10px;
+  background-color: #f8f8f8;
   padding: 20px;
-  width: 950px;
-  height: 300px;
+  width: 825px;
+  height: 595px;
+  margin-right: 475px;
+  margin-top: 45px;
   display: flex;
   flex-direction: column;
   justify-content: space-between; 
   align-items: center;
-  margin-right: 520px;
 }
 
 
@@ -64,5 +65,8 @@ li:hover {
   background-color: #E33437;
 }
 
-
+.pin-input {
+  border: solid 1px  lightgray;
+  border-radius: 5px;
+}
 

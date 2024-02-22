@@ -6,12 +6,17 @@ import PaginaPrincipal from './PaginaPrincipal/PaginaPrincipal';
 import ATMMenu from './MenuPrincipal/ATMMenu'; 
 import CardNumber from './InsercionTarjeta/InsercionTarjeta';
 import PinNumber from './InsercionPIN/InsercionPIN';
-import AgentServices from './AgentServices/AgentServices';
+import CambioBandejas from './CambioBandejas/CambioBandejas';
 import UserServices from './UserServices/UserServices';
 import RetiroTarjeta from './RetiroTarjeta/RetiroTarjeta';
 import MainConsulta from './ConsultaSaldo/ConsultaSaldo';
 import RetiroSinTarjeta from './RetiroSinTarjeta/RetiroSinTarjeta';
-
+import OtrasTransacciones from './OtrasTransacciones/OtrasTransacciones';
+import SinServicio from './FueraDeServicio/FueraServicio';
+import FueraServicio from './FueraDeServicio/FueraServicio';
+import DenominacionesDisponibles from './DenominacionesDisponibles/DenominacionesDisponibles';
+import MenuServicios from './MenuServicios/MenuServicios';
+import Reports from './Reportes/Reportes';
 function App() {
   return (
     <div className="App">
@@ -21,11 +26,16 @@ function App() {
             <Route path='/main-menu' element={<ATMMenu/>}/>
             <Route path='/card-number' element={<CardNumber/>}/>
             <Route path='/pin-number' element={<PinNumber/>}/>
-            <Route path='/agent-services' element={<AgentServices/>}/>
+            <Route path='/agent-services' element={<CambioBandejas/>}/>
             <Route path='/user-services' element={<UserServices/>}/>
             <Route path='/retiro-tarjeta' element={<RetiroTarjeta/>}/>
             <Route path='/main-consulta' element={<MainConsulta/>}/>
             <Route path='/sin-tarjeta' element={<RetiroSinTarjeta/>}/>
+            <Route path='/otras-transacciones' element={<OtrasTransacciones/>}/>
+            <Route path='/sin-servicio' element={<FueraServicio/>}/>;
+            <Route path='/denominaciones-disponibles' element={<DenominacionesDisponibles/>}/>;
+            <Route path='/menu-servicios' element={<MenuServicios/>}/>;
+            <Route path='/reportes' element={<Reports/>}/>
           </Routes>
         </Router>
     </div>

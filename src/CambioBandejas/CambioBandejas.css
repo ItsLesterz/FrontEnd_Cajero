@@ -16,11 +16,11 @@
     
         background-color: rgba(255, 255, 255, 0.8);
     
-        border-radius: 10px;
         padding: 20px;
-        width: 800px;
-        height: 500px;
-        margin-right: 510px;
+        width: 825px;
+        height: 595px;
+        margin-right: 475px;
+        margin-top: 45px;
     }
     
     h2 {
@@ -56,12 +56,12 @@
         z-index: 1;
         left: 0;
         top: 0;
-        width: 57.8%;
-        height: 70%;
+        width: 49.8%;
+        height: 65.7%;
         overflow: auto;
         background-color: rgba(0,0,0,0.5);
-        margin-top: 135px;
-        margin-left: 90px;
+        margin-top: 179px;
+        margin-left: 179px;
     }
     
     .popup-content {
