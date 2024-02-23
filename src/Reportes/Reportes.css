@@ -32,11 +32,11 @@
   }
 
   .card-number-header {
-    width: 150px;
+    width: 190px;
   }
 
   .report-details-header {
-    width: 370px;
+    width: 220px;
   }
 
   .reports {
@@ -57,9 +57,23 @@
   }
 
   .card-number {
-    width: 150px;
+    width: 190px;
   }
 
   .report-details {
-    width: 370px;
+    width: 220px;
+  }
+  .fecha-header{
+    width: 300px;
+  }
+  .fecha-container{
+    width: 300px;
+  }
+
+  .monto-header {
+    width: 100px;
+  }
+
+  .monto {
+    width: 100px
   }

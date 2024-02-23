@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
     useEffect(() => {
       timer = setTimeout(() => {
         setShowPopup(true);
-      }, 10000);
+      }, 20000);
 
       // Limpiar el temporizador cuando el componente se desmonte
       return () => {

@@ -218,6 +218,7 @@ const PaginaPrincipal = ({ onSelectOption }) => {
               
           </ul>
           <ul className='trays-options'>
+            <li className='negative-button' onClick={() => navigate('/main-menu')}>Salir</li>
             <li onClick={handleInsertNewTrays}>Cargar Bandejas</li>
             {hasExistingTrays && (
               <li onClick={handleRemoveTrays}>Retirar Bandejas</li>

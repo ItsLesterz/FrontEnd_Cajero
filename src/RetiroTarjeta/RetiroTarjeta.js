@@ -14,6 +14,8 @@ const ATMMenu = ({ onSelectOption }) => {
   const [cardNumber, setCardNumber] = useState('');
   const [trays, setTrays] = useState([]);
   const [amount, setAmount] = useState('');
+  const [stringAmount, setStringAmount] = useState('');
+
   const [details, setDetails] = useState('');
 
   useEffect(() => {
@@ -53,7 +55,8 @@ const ATMMenu = ({ onSelectOption }) => {
   }
 
   const handleWithdraw = () => {
-    if (amount <= 0) {
+    console.log(amount);
+    if (amount <= 0 || amount > 5000) {
       setDetails('Ingrese un monto válido.');
       setTimeout(() => {
         setDetails('');
@@ -106,28 +109,48 @@ const ATMMenu = ({ onSelectOption }) => {
     })
   }
 
+  const handleMiles = (e) => {
+    const inputValue = e.target.value.replace(/\D/g, ""); // Eliminar cualquier carácter que no sea un dígito
+    let formattedValue = "";
+    const numberOfDigits = inputValue.length; 
+    for (let i = numberOfDigits - 1; i >= 0; i--) {
+        formattedValue = inputValue[i] + formattedValue;
+        if ((numberOfDigits - i) % 3 === 0 && i !== 0) {
+            formattedValue = "," + formattedValue;
+        }
+    }
+    setStringAmount(formattedValue)
+    setAmount(e.target.value); 
+};
+
+
+
+
   return (
     <Layout>
     <div className="card-withdrawal-container">
       <div className="card-withdrawal-wrapper">
-        <h2>Digite el monto en múltiplos de 100 lempiras o seleccione un monto fijo.</h2>
-        <h3>Monto máximo a retirar : L. 5000</h3>
+      <h2>
+  Digite el monto en múltiplos de {
+    trays.length > 0 ? (
+      <>
+        {trays.map((tray, index) => (
+          <span key={index}>
+            {tray.Denominacion_Billete}
+            {index !== trays.length - 1 && ", "} {/* Agrega una coma después de cada elemento excepto el último */}
+          </span>
+        ))}
+      </>  
+    ) : (
+      "lempiras"
+    )} 
+    o seleccione un monto fijo.
+</h2>
+        <h3>Monto máximo a retirar : L. 5,000</h3>
         <div className='amount-input-container'>
-            <input
-                value={amount}
-                type="number"
-                id="inputAmount"
-                name="inputAmount"
-                class="form-control"
-                min="0"
-                step="100"
-                max="5000"
-                onInput={(e) => {
-                if (e.target.value > 5000) {
-                    e.target.value = 5000;
-                }
-                }}
-                onChange={(e) => setAmount(e.target.value)}
+        <input
+                value={stringAmount}
+                onChange={handleMiles}
             />
             <p className='error-message'>{details}</p>
         </div>

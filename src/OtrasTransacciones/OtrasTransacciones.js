@@ -12,6 +12,9 @@ const OtrasTransacciones = () => {
         if (option === 2) {
             navigate('/reportes-tarjeta', { state: { data: cardNumber }});
         }
+        if (option === 3) {
+            navigate('main-menu');
+        }
     }
     return(
         <Layout>
@@ -20,7 +23,7 @@ const OtrasTransacciones = () => {
                 <ul className='options-list'>
                     <li className='' onClick={() => handleOptionSelect(1)}>Ver Saldo</li>
                     <li className='' onClick={() => handleOptionSelect(2)}>Reportes</li>
-                    <li className='negative-button'>Salir</li>
+                    <li className='negative-button' onClick={() => handleOptionSelect(3)}>Salir</li>
                 </ul>
             </div>
         </div>

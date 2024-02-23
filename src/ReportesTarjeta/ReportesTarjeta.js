@@ -36,7 +36,28 @@ const ATMMenu = ({ onSelectOption }) => {
         })
         .catch((error) => {
             setDetails(error.response.data.details);
-        })            
+        })    
+        
+        
+}
+
+const handleMiles = (monto) => {
+    const inputValue = monto.toString().replace(/\D/g, ""); // Convertir a cadena de texto y luego eliminar caracteres no numéricos
+    let formattedValue = "";
+    const numberOfDigits = inputValue.length; 
+    for (let i = numberOfDigits - 1; i >= 0; i--) {
+        formattedValue = inputValue[i] + formattedValue;
+        if ((numberOfDigits - i) % 3 === 0 && i !== 0) {
+            formattedValue = "," + formattedValue;
+        }
+    }
+    return formattedValue;
+};
+
+const dateFormat = (dateStr) => {
+    const dateObj = new Date(dateStr);
+    const formattedDate = `${("0" + dateObj.getUTCDate()).slice(-2)}-${("0" + (dateObj.getUTCMonth() + 1)).slice(-2)}-${dateObj.getUTCFullYear().toString()}`;
+    return formattedDate;
 }
 
     return (
@@ -52,6 +73,7 @@ const ATMMenu = ({ onSelectOption }) => {
             <div className='reports-header'>
                 <p className='trans-id-header'>Número Tarjeta</p>
                 <p className='trans-card-number-header'>Detalles</p>
+                <p className='monto-header'>Monto</p>
                 <p className='trans-report-details-header'>Fecha</p>
             </div>
             <div className='reports'>
@@ -60,7 +82,8 @@ const ATMMenu = ({ onSelectOption }) => {
                         <div key={index} className='report'>
                             <p className='trans-card-number'>{report.Numero_Tarjeta}</p>
                             <p className='trans-report-details'>{report.Detalles}</p>
-                            <p className='trans-id'>{report.Fecha_Transaccion}</p>
+                            <p className='monto-header'>{handleMiles(report.Monto)}</p>
+                            <p className='trans-id'>{dateFormat(report.Fecha_Transaccion)}</p>
                         </div>
                     ))
                 ):(

@@ -16,41 +16,67 @@ const ATMMenu = ({ onSelectOption }) => {
     }
 
     const handleGetReports= () => {
-        if (startDate === '' || endDate === '') {
-            setDetails('Selecciones el rango de fechas a consultar.')
-            setTimeout(() => {
-                setDetails('');
-            }, 2000);
-        } else {
-            axios.post('http://localhost:4000/reports/get-reports', { startDate: startDate, endDate: endDate})
+        axios.post('http://localhost:4000/reports/get-reports', { startDate: startDate, endDate: endDate})
             .then((response) => {
                 setReports(response.data.data);
+                console.log(response.data.data);
                 console.log(response.data.data[0].Detalles);
             })
             .catch((error) => {
                 setDetails(error.response.data.details);
             })
             console.log(startDate);
-        }
     }
+
+    const handleGetMobthReports= () => {
+        axios.post('http://localhost:4000/reports/get-last-month', { startDate: startDate, endDate: endDate})
+            .then((response) => {
+                setReports(response.data.data);
+                console.log(response.data.data);
+                console.log(response.data.data[0].Detalles);
+            })
+            .catch((error) => {
+                setDetails(error.response.data.details);
+            })
+            console.log(startDate);
+    }
+
+    const dateFormat = (dateStr) => {
+        const dateObj = new Date(dateStr);
+        const formattedDate = `${("0" + dateObj.getUTCDate()).slice(-2)}-${("0" + (dateObj.getUTCMonth() + 1)).slice(-2)}-${dateObj.getUTCFullYear().toString()}`;
+        return formattedDate;
+    }
+
+    const handleMiles = (monto) => {
+        const inputValue = monto.toString().replace(/\D/g, ""); // Convertir a cadena de texto y luego eliminar caracteres no numéricos
+        let formattedValue = "";
+        const numberOfDigits = inputValue.length; 
+        for (let i = numberOfDigits - 1; i >= 0; i--) {
+            formattedValue = inputValue[i] + formattedValue;
+            if ((numberOfDigits - i) % 3 === 0 && i !== 0) {
+                formattedValue = "," + formattedValue;
+            }
+        }
+        return formattedValue;
+    };
+    
 
     return (
     <div className="reports-container">
         <div className="reports-wrapper">
             <h1>Reportes</h1>
             <div className='options-container'>
-                <label for="fecha">Inicio:</label>
-                <input type="date" id="fecha" name="fecha" onChange={(e) => setStartDate(e.target.value)}/>
-                <label for="fecha">Fin:</label>
-                <input type="date" id="fecha" name="fecha" onChange={(e) => setEndDate(e.target.value)}/>
-                <button onClick={handleGetReports}>Consultar</button>
+                <button onClick={handleGetMobthReports}>Mes Anterior</button>
+                <button onClick={handleGetReports}>Mes Actual</button>
             </div>
+            
             <p className='error-message'>{details}</p>
             <div className='reports-header'>
                 <p className='id-header'>Id</p>
                 <p className='card-number-header'>Numero Tarjeta</p>
                 <p className='report-details-header'>Detalles</p>
-                <p>Monto</p>
+                <p className='monto-header'>Monto</p>
+                <p className='fecha-header'>Fecha del proceso</p>
             </div>
             <div className='reports'>
                 {reports.length > 0 ? (
@@ -59,7 +85,8 @@ const ATMMenu = ({ onSelectOption }) => {
                             <p className='id'>{report.Id_Reportes}</p>
                             <p className='card-number'>{report.Numero_Tarjeta}</p>
                             <p className='report-details'>{report.Detalles}</p>
-                            <p className='amount'>{report.Monto}</p>
+                            <p className='monto'>{handleMiles(report.Monto)}</p>
+                            <p className='fecha-container'>{dateFormat(report.Fecha_Transaccion)}</p>
                         </div>
                     ))
                 ):(
