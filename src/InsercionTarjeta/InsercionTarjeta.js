@@ -14,6 +14,7 @@ const RetiroConTarjetaScreen = () => {
             const cardData = response.data.data;
             console.log(response.data.data);
             setDetails('');
+            console.log('cardData: ', cardData);
             navigate('/pin-number', { state: { cardData: cardData } });
         } else {
             setDetails(response.data.details);

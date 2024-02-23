@@ -17,6 +17,7 @@ import FueraServicio from './FueraDeServicio/FueraServicio';
 import DenominacionesDisponibles from './DenominacionesDisponibles/DenominacionesDisponibles';
 import MenuServicios from './MenuServicios/MenuServicios';
 import Reports from './Reportes/Reportes';
+import Anterior from './AnterioresTrans/AnterioresTrans';
 function App() {
   return (
     <div className="App">
@@ -36,6 +37,7 @@ function App() {
             <Route path='/denominaciones-disponibles' element={<DenominacionesDisponibles/>}/>;
             <Route path='/menu-servicios' element={<MenuServicios/>}/>;
             <Route path='/reportes' element={<Reports/>}/>
+            <Route path='/reportes-anteriores' element={<Anterior/>}/>
           </Routes>
         </Router>
     </div>

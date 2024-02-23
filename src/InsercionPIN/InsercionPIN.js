@@ -11,6 +11,8 @@ function InsercionPIN() {
     const [details, setDetails] = useState('');
     const [cardNumber, setCardNumber] = useState('');
     const [cardType, setCardType] = useState('');
+
+    
     const handlePINChange = (e) => {
         const inputValue = e.target.value.replace(/\D/g, "").substring(0, 4);
         let formattedValue = "";
@@ -22,6 +24,15 @@ function InsercionPIN() {
         }
         setPIN(formattedValue);
     };
+    useEffect(() => {
+        if (location.state) {
+            setCardNumber(location.state.cardData.cardNumber);
+            setCardType(location.state.cardData.type);
+
+        } else {
+            navigate('/card-number');
+        }
+    });
 
     const handleExit = () => {
         navigate("/main-menu")
@@ -29,6 +40,8 @@ function InsercionPIN() {
 
     const handleEnviarPIN = (e) => {
         e.preventDefault();
+        
+        console.log('cardNumber: ', cardNumber);
         axios.post('http://localhost:4000/cards/validate-pin', {cardNumber: cardNumber, type: cardType, pin: PIN})
         .then((response) => {
             if(response.data.success) {
@@ -79,15 +92,7 @@ function InsercionPIN() {
         })
       }
 
-    useEffect(() => {
-        if (location.state) {
-            setCardNumber(location.state.cardData.cardNumber);
-            setCardType(location.state.cardData.type);
-
-        } else {
-            navigate('/card-number');
-        }
-    });
+   
 
     return(
         <div className='insert-pin-container'>
