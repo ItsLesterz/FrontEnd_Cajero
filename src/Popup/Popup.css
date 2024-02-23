@@ -1,0 +1,42 @@
+.popup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 49.8%;
+    height: 65.7%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+    margin-top: 179px;
+    margin-left: 179px;
+}
+
+
+.popup p {
+  margin-bottom: 15px; 
+}  
+  .popup button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px !important; 
+  }
+  
+  .popup button.continuar {
+    background-color: #28a745; 
+    color: #fff; 
+  }
+  
+  .popup button.salir {
+    background-color: #dc3545; 
+    color: #fff; 
+  }
+  
+  .popup button:hover {
+    opacity: 0.8;
+  }

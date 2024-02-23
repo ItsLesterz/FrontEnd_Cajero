@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './ATMMenu.css';
 import { useNavigate } from 'react-router-dom';
 const ATMMenu = ({ onSelectOption }) => {
   const navigate = useNavigate();
 
+  
 
   const handleNavigate = (option) => {
     if (option === 0) {
@@ -28,7 +29,7 @@ const ATMMenu = ({ onSelectOption }) => {
         </ul>
         <ul className='options'>
           <li className='option' onClick={() => handleNavigate(1)}>Retiro sin Tarjeta</li>
-          <li className='empty'></li>
+          <li className='vacio'></li>
         </ul>
       </div>
       </div>

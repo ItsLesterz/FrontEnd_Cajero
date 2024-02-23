@@ -14,8 +14,11 @@ const ATMMenu = () => {
   const handleGetTrays = () => {
     axios.post('http://localhost:4000/trays/get-trays', {atmId: 'CJ001'})
     .then((response) => {
-      setTrays(response.data.data);
-      console.log(response.data.data);
+      if (response.data.data.length > 0) {
+        setTrays(response.data.data);
+      } else {
+        navigate('/sin-servicio');
+      }
     })
     .catch((error) => {
       console.log(error);

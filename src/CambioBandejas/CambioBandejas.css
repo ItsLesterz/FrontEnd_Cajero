@@ -1,10 +1,12 @@
     .agent-services-container {
-        position: relative;
-        background: url('../bg.png') center/contain;
-        height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
+        background: url('../bg.png') center/contain;
+        height: 100vh;
+        background-repeat: no-repeat;
+        background-color: darkgray;
     }
     
     
@@ -14,8 +16,7 @@
         align-items: center;
         flex-direction: column;
     
-        background-color: rgba(255, 255, 255, 0.8);
-    
+        background-color: #b8feff;
         padding: 20px;
         width: 825px;
         height: 595px;

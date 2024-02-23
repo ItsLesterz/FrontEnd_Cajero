@@ -17,6 +17,9 @@ import FueraServicio from './FueraDeServicio/FueraServicio';
 import DenominacionesDisponibles from './DenominacionesDisponibles/DenominacionesDisponibles';
 import MenuServicios from './MenuServicios/MenuServicios';
 import Reports from './Reportes/Reportes';
+import Layout from './Layout/Layout';
+import PantallaRetiro from './PantallaRetiro/PantallaRetiro'
+import Finalizacion from './Finalizacion/Finalizacion';
 function App() {
   return (
     <div className="App">
@@ -36,7 +39,10 @@ function App() {
             <Route path='/denominaciones-disponibles' element={<DenominacionesDisponibles/>}/>;
             <Route path='/menu-servicios' element={<MenuServicios/>}/>;
             <Route path='/reportes' element={<Reports/>}/>
-          </Routes>
+            <Route path='/pantalla-retiro' element={<PantallaRetiro/>}/>
+            <Route path='/finalizacion' element={<Finalizacion/>}/>
+
+          </Routes>          
         </Router>
     </div>
   );

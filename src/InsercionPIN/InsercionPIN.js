@@ -77,7 +77,7 @@ function InsercionPIN() {
         .catch((error) => {
           console.log(error);
         })
-      }
+    }
 
     useEffect(() => {
         if (location.state) {

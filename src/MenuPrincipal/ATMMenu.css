@@ -10,7 +10,7 @@
 }
 
 .atm-menu-wrapper {
-  background-color: #f8f8f8;
+  background-color: #b8feff;
   padding: 20px;
   width: 825px;
   height: 595px;
@@ -57,10 +57,10 @@ ul {
   width: 100%;
 }
 
-.empty {
-  background-color: #f8f8f8;
+.vacio {
+  background-color: #b8feff;
 }
 
-.empty:hover {
-  background-color: #f8f8f8;
+.vacio:hover {
+  background-color: #b8feff;
 }

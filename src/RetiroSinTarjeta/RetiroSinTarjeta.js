@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './RetiroSinTarjeta.css';
 import axios from 'axios';
+import Layout from '../Layout/Layout';
 
 const ATMMenu = ({ onSelectOption }) => {
 
@@ -29,10 +30,58 @@ const ATMMenu = ({ onSelectOption }) => {
   };
 
   const handleWithdraw = () => {
-    setDetails('No hay conexion.');
+    axios.post('http://localhost:4000/cards/retiro-sin-tarjeta', {codigo: code, codigoCajero: 'CJ001'})
+    .then((response) => {
+        const numeroTarjeta = response.data.data;
+        const amount = response.data.monto;
+        if (response.data.success) {
+            handleCreateReport('Se realizó un retiro de ' + amount, amount, numeroTarjeta);
+            navigate('/pantalla-retiro');
+            
+        } else {
+            handleCreateReport('Retiro rechazado de ' + amount, amount, numeroTarjeta);
+            setDetails(response.data.details);
+        }
+    })
+    .catch((error) => {
+        if (error.response.data.data) {
+            const numeroTarjeta = error.response.data.data;
+            console.log(numeroTarjeta);
+            const amount = error.response.data.monto;
+            handleCreateReport('Retiro rechazado de ' + amount, amount, numeroTarjeta);
+        }
+        setDetails(error.response.data.details);
+        setTimeout(() => {
+            setDetails('');
+        }, 2000);
+    })
+  }
+
+  const handleCreateReport = (details, amount, cardNumber) => {
+    const fecha = new Date; 
+    const dia = fecha.getDate().toString().padStart(2, '0'); 
+    const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
+    const anio = fecha.getFullYear().toString();
+
+    const fechaFormateada = `${anio}-${mes}-${dia}`;
+
+    const reportData = {
+      numeroTarjeta: cardNumber,
+      fechaTransaccion: fechaFormateada,
+      detalles: details,
+      monto: amount
+    }
+    axios.post('http://localhost:4000/reports/create-report', { reportData: reportData})
+    .then((response) => {
+      console.log(response.data.details);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
   }
 
   return (
+    <Layout>
     <div className="no-card-withdrawal-container">
       <div className="no-card-withdrawal-wrapper">
         <div className='info'>
@@ -59,6 +108,7 @@ const ATMMenu = ({ onSelectOption }) => {
         </div>
       </div>
      </div>
+     </Layout>
   );
 };
   
