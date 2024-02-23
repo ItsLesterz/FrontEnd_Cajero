@@ -10,7 +10,7 @@
   }
   .reports-wrapper {
     background-color: rgba(255, 255, 255, 0.8);
-    background-color: #e7feff;
+    background-color: #f8f8f8;
     padding: 20px;
     width: 825px;
     height: 595px;
@@ -27,16 +27,16 @@
     width: 90%;
   }
 
-  .id-header {
-    width: 40px;
+  .trans-id-header {
+    width: 250px;
   }
 
-  .card-number-header {
-    width: 150px;
+  .trans-card-number-header {
+    width: 200px;
   }
 
-  .report-details-header {
-    width: 370px;
+  .trans-report-details-header {
+    width: 250px;
   }
 
   .reports {
@@ -52,14 +52,27 @@
     border-bottom: 2px dashed lightgray;
   }
 
-  .id {
-    width: 40px;
+  .trans-id {
+    width: 250px;
   }
 
-  .card-number {
+  .trans-card-number {
+    width: 200px;
+  }
+
+  .trans-report-details {
+    width: 250px;
+  }
+
+  .options-container button{
+    background-color: rgb(225, 225, 225);
     width: 150px;
+    height: 30px;
+    margin: 5px;
+    border: none;
+    border-radius: 3px;
   }
 
-  .report-details {
-    width: 370px;
+  .options-container button:hover {
+    background-color: rgb(198, 198, 198);
   }

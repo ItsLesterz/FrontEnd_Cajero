@@ -65,7 +65,7 @@ const ATMMenu = ({ onSelectOption }) => {
         handleCreateReport('Se realizó un retiro de ' + amount, amount);
         navigate('/pantalla-retiro');
       } else {
-        handleCreateReport('Retiro rechazado de  ' + amount, 0.00);
+        handleCreateReport('Retiro rechazado de  ' + amount, amount);
         setDetails(response.data.details);
         setTimeout(() => {
           setDetails('');
@@ -73,7 +73,7 @@ const ATMMenu = ({ onSelectOption }) => {
       }
     })
     .catch((error) => {
-      handleCreateReport('Retiro rechazado de  ' + amount, 0.00);
+      handleCreateReport('Retiro rechazado de  ' + amount, amount);
       setDetails(error.response.data.details);
       setTimeout(() => {
         setDetails('');

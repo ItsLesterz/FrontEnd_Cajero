@@ -20,6 +20,7 @@ import Reports from './Reportes/Reportes';
 import Layout from './Layout/Layout';
 import PantallaRetiro from './PantallaRetiro/PantallaRetiro'
 import Finalizacion from './Finalizacion/Finalizacion';
+import ReportesTarjeta from './ReportesTarjeta/ReportesTarjeta';
 function App() {
   return (
     <div className="App">
@@ -41,7 +42,7 @@ function App() {
             <Route path='/reportes' element={<Reports/>}/>
             <Route path='/pantalla-retiro' element={<PantallaRetiro/>}/>
             <Route path='/finalizacion' element={<Finalizacion/>}/>
-
+            <Route path='/reportes-tarjeta' element={<ReportesTarjeta/>}/>
           </Routes>          
         </Router>
     </div>

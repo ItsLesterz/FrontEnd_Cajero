@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import './ConsultaSaldo.css';
+import Layout from '../Layout/Layout';
 
 function Saldo() {
     const location = useLocation();
@@ -35,6 +36,7 @@ function Saldo() {
     
 
     return (
+        <Layout>
         <div className="atm-menu-container">
             <div className='atm-menu-wrapper'>
                 <h2 className='titulo'>Saldo Actual
@@ -43,7 +45,8 @@ function Saldo() {
                     <li className='negative-button' onClick={() => handleNavigate(0)}>Salir</li>
                 </ul>
             </div>
-        </div>        
+        </div>    
+        </Layout>    
     );
 }
 
