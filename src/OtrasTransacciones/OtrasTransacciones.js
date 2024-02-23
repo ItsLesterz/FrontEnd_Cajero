@@ -19,7 +19,7 @@ const OtrasTransacciones = () => {
             <div className="other-transactions-wrapper">
                 <ul className='options-list'>
                     <li className='' onClick={() => handleOptionSelect(1)}>Ver Saldo</li>
-                    <li className='' onClick={() => handleOptionSelect(2)}>Transacciones</li>
+                    <li className='' onClick={() => handleOptionSelect(2)}>Reportes</li>
                     <li className='negative-button'>Salir</li>
                 </ul>
             </div>
